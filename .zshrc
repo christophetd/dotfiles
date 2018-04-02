@@ -4,7 +4,7 @@ export TERM="xterm-256color"
 # Powerline 9k theme
 source ~/.fonts/*.sh
 POWERLEVEL9K_MODE='awesome-fontconfig'
-export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs)
+export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs dir_writable)
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S \uE868  %d.%m.%y}"
 export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time root_indicator background_jobs ram load)
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
