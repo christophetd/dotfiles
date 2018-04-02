@@ -125,6 +125,9 @@ bindkey "$ALT\y" insert-last-command-output
 
 bindkey -s "^[e" 'chmod +x !!0 && !-1^M^M'
 
+# Bind 'home' and 'end' keys to start and end of line
+bindkey "^[[1~" beginning-of-line
+bindkey "^[[4~" end-of-line
 
 # Various configuration
 export PATH=$PATH:~/.bin
