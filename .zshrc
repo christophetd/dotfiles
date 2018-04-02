@@ -122,7 +122,7 @@ function insert-last-command-output() {
 zle -N insert-last-command-output
 bindkey "$ALT\y" insert-last-command-output
 
-bindkey -s "^[e" 'chmod +x !!0 && !-1^M'
+bindkey -s "^[e" 'chmod +x !!0 && !-1^M^M'
 
 
 # Various configuration
