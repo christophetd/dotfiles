@@ -56,7 +56,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # Plugin configuration
-export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES=":3 hackzo hackzor"
+export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES=":3 hackzo hackzor _"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -88,6 +88,10 @@ alias serve='python -m SimpleHTTPServer'
 function quietly {
   $@ >/dev/null
 }
+
+alias copy='xclip -selection clipboard'
+# Note: this takes precedence over the default 'paste' command
+alias paste='xclip -o -selection clipboard'
 
 function extract () {
   if [ -f $1 ] ; then
