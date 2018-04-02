@@ -50,6 +50,7 @@ plugins=(
   tmux
   alias-tips
   colored-man-pages
+  docker
 )
 
 source $ZSH/oh-my-zsh.sh
