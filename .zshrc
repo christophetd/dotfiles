@@ -51,6 +51,7 @@ plugins=(
   alias-tips
   colored-man-pages
   docker
+  zsh-completions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -75,6 +76,7 @@ export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES=":3 hackzo hackzor _"
 export EDITOR='vim'
 
 # Aliases
+alias v='vim'
 alias myip='curl ifconfig.co'
 alias zshrc='$EDITOR $HOME/.zshrc'
 alias ..='cd ..'
