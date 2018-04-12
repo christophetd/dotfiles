@@ -4,9 +4,9 @@ export TERM="xterm-256color"
 # Powerline 9k theme
 source ~/.fonts/*.sh
 POWERLEVEL9K_MODE='awesome-fontconfig'
-export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs dir_writable)
+export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon user dir vcs dir_writable)
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S \uE868  %d.%m.%y}"
-export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time root_indicator background_jobs ram load)
+export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time background_jobs ram load)
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 export POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=1
@@ -85,8 +85,9 @@ alias df='df -h'
 alias py3='python3.6'
 alias py='python2.7'
 alias serve='python -m SimpleHTTPServer'
-
-
+alias vpn='sudo $HOME/tools/protonvpn-cli/protonvpn-cli.sh -connect'
+alias vpn-disconnect='sudo $HOME/tools/protonvpn-cli/protonvpn-cli.sh -disconnect'
+alias dig='dig +short'
 function quietly {
   $@ >/dev/null
 }
@@ -146,4 +147,8 @@ fi
 
 # Shell startup code
 cd $HOME
-fortune -s | cowsay -f tux
+cowsay -f tux "Hello, $USER!"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
