@@ -4,11 +4,11 @@ export TERM="xterm-256color"
 # Powerline 9k theme
 source ~/.fonts/*.sh
 POWERLEVEL9K_MODE='awesome-fontconfig'
-export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon user dir vcs dir_writable)
+export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon user dir vcs virtualenv dir_writable)
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S \uE868  %d.%m.%y}"
-export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time background_jobs ram load)
+export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time background_jobs ram load) 
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 export POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=1
 DISABLE_AUTO_TITLE=true
 
@@ -74,8 +74,18 @@ export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES=":3 hackzo hackzor _"
 
 
 export EDITOR='vim'
+source ~/.bin/tmuxinator.zsh
+
 
 # Aliases
+alias ia='ip --brief --color a | column -t | grep -vE "(vboxnet|vmnet|br-|veth)"'
+alias p1='ping -c 3 1.1.1.1'
+alias ve='source venv/bin/activate'
+alias empire='(docker rm -f empire 2>/dev/null || true) && docker run --name empire -it -p 4444:4444 --rm empireproject/empire'
+alias postman="screen -m -d bash -c ''~/Downloads/Postman/Postman"
+alias vssh='vault ssh -mode=ca -role=infra'
+alias pwn='gdb'
+alias gpm='git push origin master'
 alias cat=bat
 alias cert='openssl x509 -inform pem -noout -text -in'
 alias sql='mysql -uroot -h 127.0.0.1 -ptoor'
@@ -161,6 +171,8 @@ CTRL='^'
 bindkey -s "$ALT\w" 'cd ~/workspace^M'
 bindkey -s "$ALT\d" 'cd ~/Downloads^M'
 bindkey -s "$CTRL " 'git status^M'
+bindkey -s "$ALT\i" 'ia^M'
+bindkey -s "$ALT\r" 'route -n^M'
 bindkey -s "$CTRL$ALT" 'ls -lah^M'
 
 function insert-last-command-output() {
@@ -181,7 +193,7 @@ bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
 
 # Various configuration
-export PATH=$PATH:~/.bin
+export PATH=$PATH:~/.bin:~/go/bin/:/snap/bin/
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Load environment variables from .env (sensitive env variables that I don't want to commit to Github)
@@ -199,10 +211,16 @@ fi
 cd $HOME
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Commented out ; takes too much time
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export GO_HOME="/home/christophetd/workspace/go"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /home/christophetd/.bin/vault vault
+
+
+xhost + >/dev/null 2>&1
+
+source ~/.bin/z

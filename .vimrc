@@ -40,6 +40,7 @@ colorscheme awe
 " Indentation
 set tabstop=2
 set expandtab
+set shiftwidth=4
 
 " Open a file at the same location as previously saved
 if has("autocmd")
